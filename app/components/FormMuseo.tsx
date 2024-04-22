@@ -34,6 +34,7 @@ const ContactMForm: React.FC = () => {
 
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+  const todayDate = new Date().toISOString().split('T')[0];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -111,7 +112,7 @@ const ContactMForm: React.FC = () => {
       <div>
         <label>
           Fecha del Evento:
-          <input className={styles.input}  type="date" name="eventDate" value={formData.eventDate} onChange={handleChange} />
+          <input className={styles.input}  type="date" name="eventDate" value={formData.eventDate} onChange={handleChange} min={todayDate}/>
         </label>
       </div>
       <div>

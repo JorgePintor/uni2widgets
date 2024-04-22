@@ -26,6 +26,7 @@ const ContactForm: React.FC = () => {
 
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+  const todayDate = new Date().toISOString().split('T')[0];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -101,7 +102,7 @@ const ContactForm: React.FC = () => {
       <div>
         <label>
           Fecha de Entrega:
-          <input className={styles.input}  type="date" name="deliveryDate" value={formData.deliveryDate} onChange={handleChange} />
+          <input className={styles.input}  type="date" name="deliveryDate" value={formData.deliveryDate} onChange={handleChange} min={todayDate}/>
         </label>
       </div>
       <div>
