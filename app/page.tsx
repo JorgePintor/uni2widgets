@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   ];
 
   const handleButtonClick = (index: number) => {
-    setFormOpenIndex(index);
+    setFormOpenIndex(prevIndex => (prevIndex === index ? null : index));
   };
 
   return (

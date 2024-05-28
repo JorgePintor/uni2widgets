@@ -2,6 +2,10 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import styles from '@/app/components/Home.module.css';
+import ReactDOM from 'react-dom/client'
+import EmblaCarousel from './EmblaCarousel'
+import { EmblaOptionsType } from 'embla-carousel'
+import './embla.css'
 
 interface FormData {
   name: string;
@@ -15,6 +19,10 @@ const ContactZForm: React.FC = () => {
     email: '',
     phoneNumber: '',
   });
+
+  const OPTIONS: EmblaOptionsType = { loop: true }
+  const SLIDE_COUNT = 5
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -73,6 +81,10 @@ const ContactZForm: React.FC = () => {
           Numero de Telefono:
           <input className={styles.input}  type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
         </label>
+      </div>
+      <label>Explora las figuras disponibles </label>
+      <div>
+      <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
       <div>
       <label>

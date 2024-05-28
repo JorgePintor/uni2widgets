@@ -134,6 +134,7 @@ const ContactBForm: React.FC = () => {
           <textarea  className={styles.textarea} name="feedback" value={formData.feedback} onChange={handleChange} />
         </label>
       </div>
+      
       <div>
       <label>
         <input type="checkbox"/> Deseo enterarme de las historias y lo que hay en Tijuana
