@@ -2,6 +2,8 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import styles from '@/app/components/Home.module.css';
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc ,addDoc,collection} from 'firebase/firestore';
 
 interface FormData {
   name: string;
@@ -23,6 +25,20 @@ const ContactForm: React.FC = () => {
     deliveryDate: '',
     feedback: '',
   });
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyAAM6jOYohd6yqk1qDZJ0TU2_sviJ9yWwk",
+    authDomain: "widgetstijuanidad.firebaseapp.com",
+    projectId: "widgetstijuanidad",
+    storageBucket: "widgetstijuanidad.appspot.com",
+    messagingSenderId: "552078361553",
+    appId: "1:552078361553:web:cc15b6bd8f7cb938b8d6f0",
+    measurementId: "G-W3PQNN7PKQ"
+  };
+  const app = initializeApp(firebaseConfig);
+  const firestore=getFirestore();
+  const db = getFirestore(app);
+
 
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -32,7 +48,19 @@ const ContactForm: React.FC = () => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-
+  const orderCollection = collection( firestore, 'cajaeducativa');
+  async function AddNewDocument()
+  {
+      const newDoc= await addDoc (orderCollection,{
+        name: formData.name,
+        email:formData.email ,
+        phonenumber:formData.phoneNumber  ,
+        package:formData.package ,
+        quantity:formData.quantity ,
+        deliveryDate: !formData.deliveryDate,
+        feedback:formData.feedback,
+      });
+  }
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
@@ -54,6 +82,7 @@ const ContactForm: React.FC = () => {
       //});
       //const result = await response.json();
       //console.log(result);
+      AddNewDocument();
       setSuccessMessage(true);
       setSuccessMessage(true);
       setTimeout(() => {

@@ -54,7 +54,7 @@ const ContactBForm: React.FC = () => {
         setSuccessMessage(false);
       }, 4000);
       console.log(formData);
-
+      
       //Envio a endpoint pendiente
     };
     
