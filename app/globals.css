@@ -89,6 +89,10 @@ body {
 }
 
 body {
+      body {
+        color: gray;
+        background-color: black;
+    }
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
