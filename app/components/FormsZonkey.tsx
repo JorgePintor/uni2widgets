@@ -7,6 +7,8 @@ import EmblaCarousel from './EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel'
 import './embla.css'
 import ProductList from './ProductList';
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc ,addDoc,collection} from 'firebase/firestore';
 
 interface FormData {
   name: string;
@@ -21,13 +23,33 @@ const ContactZForm: React.FC = () => {
     phoneNumber: '',
   });
 
-  const OPTIONS: EmblaOptionsType = { loop: true }
-  const SLIDE_COUNT = 5
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
-
+  //const OPTIONS: EmblaOptionsType = { loop: true }
+  //const SLIDE_COUNT = 5
+  //const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+  const firebaseConfig = {
+    apiKey: "AIzaSyAAM6jOYohd6yqk1qDZJ0TU2_sviJ9yWwk",
+    authDomain: "widgetstijuanidad.firebaseapp.com",
+    projectId: "widgetstijuanidad",
+    storageBucket: "widgetstijuanidad.appspot.com",
+    messagingSenderId: "552078361553",
+    appId: "1:552078361553:web:cc15b6bd8f7cb938b8d6f0",
+    measurementId: "G-W3PQNN7PKQ"
+  };
+  const app = initializeApp(firebaseConfig);
+  const firestore=getFirestore();
+  const db = getFirestore(app);
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
+  const orderCollection = collection( firestore, 'zonkey');
+  async function AddNewDocument()
+  {
+      const newDoc= await addDoc (orderCollection,{
+        name: formData.name,
+        email:formData.email ,
+        phonenumber:formData.phoneNumber,
+      });
+  }
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -44,6 +66,7 @@ const ContactZForm: React.FC = () => {
       return;
     }
     else {
+      AddNewDocument();
       setSuccessMessage(true);
       setSuccessMessage(true);
       setTimeout(() => {

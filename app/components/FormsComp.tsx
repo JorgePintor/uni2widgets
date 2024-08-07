@@ -57,7 +57,7 @@ const ContactForm: React.FC = () => {
         phonenumber:formData.phoneNumber  ,
         package:formData.package ,
         quantity:formData.quantity ,
-        deliveryDate: !formData.deliveryDate,
+        deliveryDate: formData.deliveryDate,
         feedback:formData.feedback,
       });
   }
@@ -138,7 +138,7 @@ const ContactForm: React.FC = () => {
         </label>
         <label>
           Fecha de Entrega:
-          <input className={styles.input}  type="date" name="deliveryDate" value={formData.deliveryDate} onChange={handleChange} min={todayDate}/>
+          <input type="date" className={styles.input}   name="deliveryDate" value={formData.deliveryDate} onChange={handleChange} min={todayDate}/>
         </label>
       </div>
       <div>

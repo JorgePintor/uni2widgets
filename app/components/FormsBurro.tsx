@@ -2,6 +2,8 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import styles from '@/app/components/Home.module.css';
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc ,addDoc,collection} from 'firebase/firestore';
 
 interface FormData {
   name: string;
@@ -27,6 +29,18 @@ const ContactBForm: React.FC = () => {
     city:'',
     feedback: '',
   });
+  const firebaseConfig = {
+    apiKey: "AIzaSyAAM6jOYohd6yqk1qDZJ0TU2_sviJ9yWwk",
+    authDomain: "widgetstijuanidad.firebaseapp.com",
+    projectId: "widgetstijuanidad",
+    storageBucket: "widgetstijuanidad.appspot.com",
+    messagingSenderId: "552078361553",
+    appId: "1:552078361553:web:cc15b6bd8f7cb938b8d6f0",
+    measurementId: "G-W3PQNN7PKQ"
+  };
+  const app = initializeApp(firebaseConfig);
+  const firestore=getFirestore();
+  const db = getFirestore(app);
 
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -36,7 +50,21 @@ const ContactBForm: React.FC = () => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-
+  const orderCollection = collection( firestore, 'burro2go');
+  async function AddNewDocument()
+  {
+      const newDoc= await addDoc (orderCollection,{
+        name: formData.name,
+        email:formData.email ,
+        organization:formData.organization,
+        phonenumber:formData.phoneNumber  ,
+        city: formData.city,
+        eventDate: formData.eventDate,
+        hour: formData.hour,
+        timeDay:formData.timeDay,
+        feedback:formData.feedback,
+      });
+  }
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name||!formData.organization || !formData.email || !formData.phoneNumber || !formData.eventDate || !formData.hour || !formData.timeDay) {
@@ -89,6 +117,12 @@ const ContactBForm: React.FC = () => {
         <label>
           Numero de Telefono:
           <input className={styles.input}  type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+        </label>
+      </div>
+      <div>
+        <label>
+          Ciudad:
+          <input className={styles.input}  type="text" name="city" value={formData.city} onChange={handleChange} />
         </label>
       </div>
       <div className={styles.containerc}>
