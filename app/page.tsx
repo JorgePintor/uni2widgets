@@ -30,11 +30,13 @@ const Home: React.FC = () => {
           />
         ))}
       </div>
+      <div className={styles.backgroundContainer}>
       <div className={styles.formContainer}>
         {buttons.map((button, index) => (
           <Form key={index} isOpen={formOpenIndex === index} formType={index} />
         ))}
       </div>
+    </div>
     </div>
   );
 };

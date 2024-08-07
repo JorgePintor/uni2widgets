@@ -16,6 +16,15 @@
     height: 60%;
   }
 
+
   .button:hover {
-    background-color: rgba(247, 241, 241, 0.849); /* Change background color on hover */
+    border-color: #005bb5;
+    box-shadow: 0 0 10px rgba(0, 91, 181, 0.5);
+  }
+  
+  .button:focus,
+  .button:active {
+    border-color: #005bb5;
+    box-shadow: 0 0 10px rgba(0, 91, 181, 0.5);
+    outline: none;
   }

@@ -83,3 +83,19 @@
     display: flex;
     justify-content: center;
   }
+
+  @media (max-width: 600px) {
+    .embla {
+      max-width: 24rem;
+      margin: auto;
+      --slide-height: 15rem;
+      --slide-spacing: 1rem;
+      --slide-size: 30%;
+    }
+    .embla__slide__img {
+
+      width: 120px;
+      height: auto; /* Maintain aspect ratio */
+    
+  }
+  }

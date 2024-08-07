@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom/client'
 import EmblaCarousel from './EmblaCarousel'
 import { EmblaOptionsType } from 'embla-carousel'
 import './embla.css'
+import ProductList from './ProductList';
 
 interface FormData {
   name: string;
@@ -84,7 +85,8 @@ const ContactZForm: React.FC = () => {
       </div>
       <label>Explora las figuras disponibles </label>
       <div>
-      <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+      <ProductList />
+
       </div>
       <div>
       <label>

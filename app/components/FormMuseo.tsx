@@ -73,16 +73,14 @@ const ContactMForm: React.FC = () => {
       <h2>¡Lleva la Tijuanidad contigo!</h2>
       </div>
 
-      <div>
+      <div className={styles.containerb}>
         <label >
           Nombre:
           <input className={styles.input} type="text" name="name" value={formData.name} onChange={handleChange} />
         </label>
-      </div>
-      <div>
         <label >
           Organización:
-          <input className={styles.input} type="text" name="organ" value={formData.organization} onChange={handleChange} />
+          <input className={styles.input} type="text" name="organization" value={formData.organization} onChange={handleChange} />
         </label>
       </div>
       <div>
@@ -97,25 +95,22 @@ const ContactMForm: React.FC = () => {
           <input className={styles.input}  type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
         </label>
       </div>
-      <div>
+      <div className={styles.containerb}>  
         <label>
           Niños:
-          <input className={styles.input} type="number" name="adults" value={formData.adults} onChange={handleChange} />
+          <input className={styles.input} type="number" name="adults" value={formData.adults} onChange={handleChange} min="0" />
         </label>
-      </div>
-      <div>
         <label>
           Adultos:
-          <input className={styles.input} type="number" name="kids" value={formData.kids} onChange={handleChange} />
+          <input className={styles.input} type="number" name="kids" value={formData.kids} onChange={handleChange} min="0"/>
         </label>
       </div>
-      <div>
+      
+      <div className={styles.containerb}>
         <label>
           Fecha del Evento:
           <input className={styles.input}  type="date" name="eventDate" value={formData.eventDate} onChange={handleChange} min={todayDate}/>
         </label>
-      </div>
-      <div>
         <label>
           Hora:
           <select  className={styles.select} name="hour" value={formData.hour} onChange={handleChange}>
@@ -134,11 +129,9 @@ const ContactMForm: React.FC = () => {
             <option value="12">12</option>
           </select>
         </label>
-      </div>
-      <div>
         <label>
           Hora:
-          <select  className={styles.select} name="hour" value={formData.timeDay} onChange={handleChange}>
+          <select  className={styles.select} name="timeDay" value={formData.timeDay} onChange={handleChange}>
             <option value="am">AM</option>
             <option value="pm">PM</option>
           </select>

@@ -69,16 +69,14 @@ const ContactBForm: React.FC = () => {
       <h2>¡Lleva la Tijuanidad contigo!</h2>
       </div>
 
-      <div>
+      <div className={styles.containerb}>
         <label >
           Nombre:
           <input className={styles.input} type="text" name="name" value={formData.name} onChange={handleChange} />
         </label>
-      </div>
-      <div>
         <label >
           Organización:
-          <input className={styles.input} type="text" name="organ" value={formData.organization} onChange={handleChange} />
+          <input className={styles.input} type="text" name="organization" value={formData.organization} onChange={handleChange} />
         </label>
       </div>
       <div>
@@ -93,13 +91,13 @@ const ContactBForm: React.FC = () => {
           <input className={styles.input}  type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
         </label>
       </div>
-      <div>
+      <div className={styles.containerc}>
         <label>
           Fecha del Evento:
           <input className={styles.input}  type="date" name="eventDate" value={formData.eventDate} onChange={handleChange} min={todayDate}/>
         </label>
-      </div>
-      <div>
+
+      
         <label>
           Hora:
           <select  className={styles.select} name="hour" value={formData.hour} onChange={handleChange}>
@@ -118,11 +116,10 @@ const ContactBForm: React.FC = () => {
             <option value="12">12</option>
           </select>
         </label>
-      </div>
-      <div>
         <label>
-          Hora:
-          <select  className={styles.select} name="hour" value={formData.timeDay} onChange={handleChange}>
+          Horario:
+          <select  className={styles.select} name="timeDay" value={formData.timeDay} onChange={handleChange}>
+            <option value=""></option>
             <option value="am">AM</option>
             <option value="pm">PM</option>
           </select>

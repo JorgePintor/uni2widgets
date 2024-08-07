@@ -33,8 +33,9 @@ const ContactForm: React.FC = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     if (!formData.name|| !formData.email || !formData.phoneNumber || !formData.quantity || !formData.deliveryDate) {
       //alert('Por favor rellena los campos faltantes.');
       setErrorMessage(true);
@@ -44,14 +45,24 @@ const ContactForm: React.FC = () => {
       return;
     }
     else {
+      //const response = await fetch('/api/contact', {
+     //   method: 'POST',
+      //  headers: {
+        //  'Content-Type': 'application/json'
+     //   },
+       // body: JSON.stringify(formData)
+      //});
+      //const result = await response.json();
+      //console.log(result);
       setSuccessMessage(true);
       setSuccessMessage(true);
       setTimeout(() => {
         setSuccessMessage(false);
       }, 4000);
-      console.log(formData);
 
-      //Envio a endpoint pendiente
+      console.log(formData);
+      
+
     };
     
   };
@@ -83,7 +94,7 @@ const ContactForm: React.FC = () => {
           <input className={styles.input}  type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
         </label>
       </div>
-      <div>
+      <div className={styles.containerb}>
         <label>
           Paquete:
           <select  className={styles.select} name="package" value={formData.package} onChange={handleChange}>
@@ -92,14 +103,10 @@ const ContactForm: React.FC = () => {
             <option value="standard">B</option>
           </select>
         </label>
-      </div>
-      <div>
         <label>
           Cantidad:
-          <input className={styles.input} type="number" name="quantity" value={formData.quantity} onChange={handleChange} />
+          <input className={styles.input} type="number" name="quantity" value={formData.quantity} onChange={handleChange} min="0"/>
         </label>
-      </div>
-      <div>
         <label>
           Fecha de Entrega:
           <input className={styles.input}  type="date" name="deliveryDate" value={formData.deliveryDate} onChange={handleChange} min={todayDate}/>
@@ -123,8 +130,12 @@ const ContactForm: React.FC = () => {
       )}
     </div>
       <div className={styles.containerb}><button className={styles.button} type="submit">Enviar</button></div>
+      
     </form>
+    
   );
+  
 };
+
 
 export default ContactForm;

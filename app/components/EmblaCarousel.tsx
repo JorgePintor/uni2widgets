@@ -5,6 +5,7 @@ import {
   NextButton,
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
+
 import useEmblaCarousel from 'embla-carousel-react'
 import styles from '@/app/components/Home.module.css';
 
@@ -32,14 +33,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           {slides.map((index) => (
             <div className="embla__slide" key={index}>
               <div>
-              <img
+              <img 
                 className="embla__slide__img"
                 src={"burro_0"+ index +".png"}
                 alt="Escultura tematica burro"
               />
               <label >
                 Cantidad:
-                <input className={styles.input} type="text" name="name"/>
+                <input className={styles.input} type="number" name="name" min="0"/>
               </label>
               </div>
             </div>
