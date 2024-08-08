@@ -68,22 +68,20 @@ const ContactBForm: React.FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name||!formData.organization || !formData.email || !formData.phoneNumber || !formData.eventDate || !formData.hour || !formData.timeDay) {
-      //alert('Por favor rellena los campos faltantes.');
       setErrorMessage(true);
       setTimeout(() => {
         setErrorMessage(false);
       }, 4000);
       return;
     }
-    else {
+    else {      
+      AddNewDocument();
       setSuccessMessage(true);
       setSuccessMessage(true);
+      window.location.href = 'https://buy.stripe.com/test_eVaaGv9Nt59S8Ra7su'; 
       setTimeout(() => {
         setSuccessMessage(false);
       }, 4000);
-      console.log(formData);
-      
-      //Envio a endpoint pendiente
     };
     
   };

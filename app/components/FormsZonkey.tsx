@@ -1,4 +1,4 @@
-// ContactForm.tsx
+
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import styles from '@/app/components/Home.module.css';
@@ -74,7 +74,6 @@ const ContactZForm: React.FC = () => {
       }, 4000);
       console.log(formData);
 
-      //Envio a endpoint pendiente
     };
     
   };

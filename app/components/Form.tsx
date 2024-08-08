@@ -8,7 +8,7 @@ import styles from '@/app/components/Home.module.css';
 
 interface FormProps {
   isOpen: boolean;
-  formType: number; // Determina el tipo de forma a desplegar en pantalla
+  formType: number; 
 }
 
 const Form: React.FC<FormProps> = ({ isOpen, formType }) => {

@@ -1,5 +1,5 @@
 .thumbnail {
-    width: 150px; /* Ajusta el tamaño según sea necesario */
+    width: 150px; 
     cursor: pointer;
     transition: transform 0.3s;
   }

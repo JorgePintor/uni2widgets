@@ -1,8 +1,12 @@
 // ContactForm.tsx
 'use client'
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import Link from 'next/link';
+import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import styles from '@/app/components/Home.module.css';
 import { initializeApp } from "firebase/app";
+import { useRouter } from 'next/router';
+
 import { getFirestore, doc, setDoc ,addDoc,collection} from 'firebase/firestore';
 
 interface FormData {
@@ -15,7 +19,9 @@ interface FormData {
   feedback: string;
 }
 
+
 const ContactForm: React.FC = () => {
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -25,7 +31,8 @@ const ContactForm: React.FC = () => {
     deliveryDate: '',
     feedback: '',
   });
-  
+
+
   const firebaseConfig = {
     apiKey: "AIzaSyAAM6jOYohd6yqk1qDZJ0TU2_sviJ9yWwk",
     authDomain: "widgetstijuanidad.firebaseapp.com",
@@ -61,6 +68,8 @@ const ContactForm: React.FC = () => {
         feedback:formData.feedback,
       });
   }
+
+  
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
@@ -73,31 +82,24 @@ const ContactForm: React.FC = () => {
       return;
     }
     else {
-      //const response = await fetch('/api/contact', {
-     //   method: 'POST',
-      //  headers: {
-        //  'Content-Type': 'application/json'
-     //   },
-       // body: JSON.stringify(formData)
-      //});
-      //const result = await response.json();
-      //console.log(result);
       AddNewDocument();
       setSuccessMessage(true);
       setSuccessMessage(true);
+      window.location.href = 'https://buy.stripe.com/test_8wM9CrgbR1XGffy7st'; 
       setTimeout(() => {
         setSuccessMessage(false);
       }, 4000);
 
       console.log(formData);
-      
 
     };
-    
+  
+
   };
 
   return (
     <form className={styles.form}  onSubmit={handleSubmit}>
+      
       <div className={styles.containera}>
         <img src="tijuanidad_caja_educativa (1).png" className={styles.img}></img>
       </div>
@@ -148,6 +150,9 @@ const ContactForm: React.FC = () => {
         </label>
       </div>
       <div>
+
+      </div>
+      <div>
       <label>
         <input type="checkbox"/> Deseo enterarme de las historias y lo que hay en Tijuana
       </label>
@@ -158,7 +163,14 @@ const ContactForm: React.FC = () => {
         <div className={styles.success}>Datos recibidos. Gracias!</div>
       )}
     </div>
-      <div className={styles.containerb}><button className={styles.button} type="submit">Enviar</button></div>
+      <div className={styles.containerb}>      
+      
+
+      <button className={styles.button} type="submit">Enviar
+
+      </button>
+
+      </div>
       
     </form>
     

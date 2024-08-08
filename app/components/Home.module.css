@@ -114,19 +114,19 @@
  align-items: center;
 }
 .textarea {
-  width: 100%; /* O el ancho que prefieras */
-  resize: none; /* Desactiva el redimensionamiento manual */
-  box-sizing: border-box; /* Incluye el padding y border en el tamaño */
+  width: 100%; 
+  resize: none; 
+  box-sizing: border-box; 
 }
 
 
   @media (max-width: 600px) {
     .buttonGroup {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Two columns */
-      gap: 10px; /* Adjust the gap between the buttons as needed */
-      justify-content: center; /* Center the grid items horizontally */
-      align-items: center; /* Center the grid items vertically */
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 10px; 
+      justify-content: center; 
+      align-items: center; 
       margin-top: 20px;
     }
     .form {
@@ -204,13 +204,4 @@
     margin: 0 auto;
   }
 
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .h2{
-      color:white;
-    }
-    .form {
-      color: black;
-    }
   }

@@ -26,7 +26,7 @@ const ProductList: React.FC = () => {
   };
 
   const handleAddToCart = (quantity: number) => {
-    alert(`Añadido al carrito: ${quantity} artículo(s)`);
+
   };
 
   return (

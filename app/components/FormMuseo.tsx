@@ -86,6 +86,7 @@ const ContactMForm: React.FC = () => {
       AddNewDocument();
       setSuccessMessage(true);
       setSuccessMessage(true);
+      window.location.href ='https://buy.stripe.com/test_aEU15V5xd6dW7N69AD';
       setTimeout(() => {
         setSuccessMessage(false);
       }, 4000);
